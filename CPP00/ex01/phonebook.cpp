@@ -1,4 +1,5 @@
 # include "Phonebook.hpp"
+# include "Contact.hpp"
 
 Phonebook::Phonebook(void)
 {

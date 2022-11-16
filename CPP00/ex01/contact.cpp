@@ -1,5 +1,6 @@
 # include "Contact.hpp"
 
+
 Contact::Contact(std::string f_name, std::string l_name, std::string n_name, std::string p_number, std::string secret)
 {
 	this->f_name = f_name;
@@ -34,4 +35,6 @@ std::string Contact::getp_number(void){ return (p_number); }
 
 std::string Contact::getsecret(void){ return (secret); }
 
-//hacer funcion para asignar el id que toca
+void	Contact::setid(int newid){ id = newid; }
+
+int 	Contact::getid(){ return (id); }

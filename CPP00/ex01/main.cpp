@@ -1,6 +1,9 @@
 #include <iostream>
 #include <string>
 
+# include "Phonebook.hpp"
+# include "Contact.hpp"
+
 static bool is_digits(const std::string &str)
 {
 	return (str.find_first_not_of("0123456789") == std::string::npos);
@@ -32,19 +35,20 @@ void ft_add(Phonebook *p_list)
 				std::cout << "Introduce the darkest secret" << std::endl;
 				break;
 		}
-		if (i == 3 && is_digits(info[i]) && vars[i] != "")
+		std::getline(std::cin, info[i]);
+		if (i == 3 && is_digits(info[i]) && info[i] != "")
 			;
-		else if (!is_digits(info[i]) && vars[i] != "")
+		else if ((i == 3 && !is_digits(info[i])) || info[i] == "")
 		{
 			std::cout << "Invalid input" << std::endl;
 			i--;
 		}
 	}
 	Contact newcontact(info[0], info[1], info[2], info[3], info[4]);
-	(*p_list).addcontact(newc);
+	(*p_list).addcontact(newcontact);
 }
 
-void ft_search()
+/*void ft_search()
 {
 	if (arrayvacia)
 	{
@@ -53,10 +57,11 @@ void ft_search()
 	}
 	std::string	input = "";
 	while ()
-}
+}*/
 
 int main(int argc, char **argv)
 {
+	Phonebook p_list;
 	std::string	input = "";
 
 	if (argc != 1)
@@ -66,10 +71,10 @@ int main(int argc, char **argv)
 	{
 		std::cout << '>';
 		std::getline(std::cin, input);
-		if (input == 'SEARCH')
-			ft_search();
-		if (input == 'ADD')
-			ft_add();
+		//if (input == 'SEARCH')
+		//	ft_search(&p_list);
+		if (input == "ADD")
+			ft_add(&p_list);
 	}
 	return 0;
 }
