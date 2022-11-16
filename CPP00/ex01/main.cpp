@@ -35,7 +35,8 @@ void ft_add(Phonebook *p_list)
 				std::cout << "Introduce the darkest secret" << std::endl;
 				break;
 		}
-		std::getline(std::cin, info[i]);
+		if (std::getline(std::cin, info[i]).rdstate() != 0)
+			exit (-1);
 		if (i == 3 && is_digits(info[i]) && info[i] != "")
 			;
 		else if ((i == 3 && !is_digits(info[i])) || info[i] == "")
@@ -48,16 +49,16 @@ void ft_add(Phonebook *p_list)
 	(*p_list).addcontact(newcontact);
 }
 
-/*void ft_search()
+void ft_search()
 {
-	if (arrayvacia)
+	if (p_list->getlen() == 0)
 	{
 		std::cout << "Phonebook is empty. You must add Contacts to be able to search for them." << std::endl;
 		return 0;
 	}
 	std::string	input = "";
-	while ()
-}*/
+	//while ()
+}
 
 int main(int argc, char **argv)
 {
@@ -70,7 +71,8 @@ int main(int argc, char **argv)
 	while (input != "EXIT")
 	{
 		std::cout << '>';
-		std::getline(std::cin, input);
+		if (std::getline(std::cin, input).rdstate() != 0)
+			exit (-1);
 		//if (input == 'SEARCH')
 		//	ft_search(&p_list);
 		if (input == "ADD")
